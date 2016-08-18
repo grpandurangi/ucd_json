@@ -1,0 +1,13 @@
+{
+  "application": "UserMgmtApp",
+  "description": "Deploying newest versions",
+  "applicationProcess": "ApplicationDeployment",
+  "environment": "UserDBAppDev",
+  "onlyChanged": "false",
+  "versions": [
+    {
+      "version": "latest",
+      "component": "ApplicationComponent"
+    },
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "ApplicationComponent1",
+  "description": "Deploy Tomcat Application",
+  "importAutomatically": false,
+  "useVfs": true,
+  "sourceConfigPlugin": "Artifactory",
+  "defaultVersionType": "FULL",
+   "properties": {
+    "ArtifactoryComponentProperties\/artifactId": "MongoDBWebapp",
+    "ArtifactoryComponentProperties\/copyCount": "1",
+    "ArtifactoryComponentProperties\/extension": ".war",
+    "ArtifactoryComponentProperties\/groupId": "MongoDBWebapp",
+    "ArtifactoryComponentProperties\/repoName": "libs-snapshot-local",
+    "ArtifactoryComponentProperties\/user": "user",
+    "ArtifactoryComponentProperties\/password": "password",
+    "ArtifactoryComponentProperties\/separator": ".",
+    "ArtifactoryComponentProperties\/repoUrl": "http:\/\/13.73.0.245:8081\/artifactory",
+    "ArtifactoryComponentProperties\/nuGetVersion":"0.0.8",
+    "ArtifactoryComponentProperties\/nuGetPackage":"MongoDBWebapp"
+  }
+}

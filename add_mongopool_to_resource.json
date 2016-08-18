@@ -1,0 +1,6 @@
+{
+ "name"="MongoDB Pool" ,
+ "description"="Mongo agents",
+ "agentPool"="MongoDB",
+ "parent"="/UserDBAgents"
+}

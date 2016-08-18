@@ -1,0 +1,172 @@
+{
+  "name": "ComponentDeploy",
+  "component": "Mynewcomponent",
+  "description": "New Component for UserMgmt",
+  "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+  "takesVersion": "false",
+  "inventoryActionType": "ADD",
+  "status": "Active",
+  "configActionType": "ADD",
+  "active": "true",
+  "propDefs": [
+  ],
+  "rootActivity": {
+    "type": "graph",
+    "name": "GRAPH",
+    "edges": [
+      {
+        "to": "First Step",
+        "type": "ALWAYS",
+        "value": ""
+      },
+      {
+        "to": "Second Step",
+        "from": "First Step",
+        "type": "ALWAYS",
+        "value": ""
+      },
+      {
+        "to": "Third Step",
+        "from": "First Step",
+        "type": "ALWAYS",
+        "value": ""
+      },
+      {
+        "to": "Fourth Step",
+        "from": "First Step",
+        "type": "ALWAYS",
+        "value": ""
+      },
+      {
+        "to": "FINISH",
+        "from": "Second Step",
+        "type": "ALWAYS",
+        "value": ""
+      }
+    ],
+    "offsets": [
+      {
+        "name": "First Step",
+        "x": "-65",
+        "y": "90"
+      },
+      {
+        "name": "Second Step",
+        "x": "-70",
+        "y": "120"
+      },
+      {
+        "name": "Third Step",
+        "x": "-75",
+        "y": "150"
+      },
+      {
+        "name": "Fourth Step",
+        "x": "-80",
+        "y": "180"
+      },
+      {
+        "name": "FINISH",
+        "x": "-90",
+        "y": "200"
+      }
+    ],
+    "children": [
+      
+        "allowFailure": false,
+        "useImpersonation": false,
+        "showHIdden": false,
+        "impersonationUseSudo": false,
+        "commandName": "Delete Files and Directories",
+        "pluginName": "Delete Files and Directories",
+        "pluginVersion": 46,
+        "type": "plugin",
+        "name": "First Step",
+        "children": [
+        ],
+        "properties": {
+          "directoryOffset": ".",
+          "artifactSetBaseDir": "",
+          "fileIncludePatterns": "**\/*",
+          "fileExcludePatterns": "",
+          "syncMode": true,
+          "fullVerification": true,
+          "setFileExecuteBits": false,
+          "verifyFileIntegrity": false,
+          "repositoryUrl": "${p:server.url}\/vfs",
+          "repositoryId": "${p:component\/code_station\/repository}",
+          "label": "${p:version.name",
+          "serverUrl": "${p:server.url}",
+          "compId": "${p:component.id}",
+          "resId": "${p:resource.id}"
+        }
+      },
+      {
+        "allowFailure": false,
+        "useImpersonation": false,
+        "showHIdden": false,
+        "impersonationUseSudo": false,
+        "commandName": "Download version (Maven build)",
+        "pluginName": "Download version (Maven build)",
+        "pluginVersion": 4,
+        "type": "plugin",
+        "name": "Second Step",
+        "children": [
+        ],
+        "properties": {
+          "directoryOffset": ".",
+          "shellInterpreter": "",
+          "scriptBody": "echo \"Hello World\"",
+          "runAsDaemon": false,
+          "outputFile": ""
+        }
+      },
+        {
+        "allowFailure": false,
+        "useImpersonation": false,
+        "showHIdden": false,
+        "impersonationUseSudo": false,
+        "commandName": "Expand War file",
+        "pluginName": "Unzip",
+        "pluginVersion": 46,
+        "type": "plugin",
+        "name": "Third Step",
+        "children": [
+        ],
+        "properties": {
+          "directoryOffset": ".",
+          "shellInterpreter": "",
+          "scriptBody": "echo \"Hello World\"",
+          "runAsDaemon": false,
+          "outputFile": ""
+        }
+      },
+        {
+        "allowFailure": false,
+        "useImpersonation": false,
+        "showHIdden": false,
+        "impersonationUseSudo": false,
+        "commandName": "Create .zip File",
+        "pluginName": "Create .zip File",
+        "pluginVersion": 46,
+        "type": "plugin",
+        "name": "Fourth Step",
+        "children": [
+        ],
+        "properties": {
+          "directoryOffset": ".",
+          "shellInterpreter": "",
+          "scriptBody": "echo \"Hello World\"",
+          "runAsDaemon": false,
+          "outputFile": ""
+        }
+      },
+      {
+        "type": "finish",
+        "name": "FINISH",
+        "children": [
+        ]
+      }
+    ]
+  }
+}

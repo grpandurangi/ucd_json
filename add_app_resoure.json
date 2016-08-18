@@ -1,0 +1,6 @@
+{
+ "name"="tomcat pool" ,
+ "description"="tomcat agents",
+ "agentPool"="Tomcat",
+ "parent"="/UserDBAgents"
+}

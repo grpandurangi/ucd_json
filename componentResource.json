@@ -1,0 +1,10 @@
+{
+  "Roleid"="52d54c26-72ac-44b3-b99e-335ea89b9a9b",
+  "name"="\/UserDBAgents\/tomcat pool",
+  "description"="",
+  "inheritTeam"="true",
+  "useImpersonation"="false",
+  "roleProperties"={},
+  "parentId"="1613b2f0-24d8-43ee-ab6b-3a7cfb81e18b",
+  "teamMappings"=[]
+}

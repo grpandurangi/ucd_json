@@ -1,0 +1,7 @@
+{
+  "name": "MongoDB",
+  "description": "MongoDB Pool",
+  "agents": [
+    "RHEL1NEW"
+  ]
+}

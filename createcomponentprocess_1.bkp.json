@@ -1,0 +1,149 @@
+{
+  "name": "ComponentDeploy",
+  "component": "Mynewcomponent",
+  "description": "New Component for UserMgmt",
+  "defaultWorkingDir": "${p:resource\/work.dir}\/${p:component.name}",
+  "takesVersion": "false",
+  "inventoryActionType": "ADD",
+  "status": "Active",
+  "configActionType": "ADD",
+  "active": "true",
+  "propDefs": [
+  ],
+  "rootActivity": {
+    "type": "graph",
+    "name": "GRAPH",
+    "edges": [
+      {
+        "to": "First Step",
+        "type": "ALWAYS",
+        "value": ""
+      },
+      {
+        "to": "Second Step",
+        "from": "First Step",
+        "type": "ALWAYS",
+        "value": ""
+      },
+      {
+        "to": "Third Step",
+        "from": "First Step",
+        "type": "ALWAYS",
+        "value": ""
+      },
+      {
+        "to": "Fourth Step",
+        "from": "First Step",
+        "type": "ALWAYS",
+        "value": ""
+      },
+      {
+        "to": "Fifth Step",
+        "from": "First Step",
+        "type": "ALWAYS",
+        "value": ""
+      },
+       {
+        "to": "Sixth Step",
+        "from": "First Step",
+        "type": "ALWAYS",
+        "value": ""
+      },
+       {
+        "to": "Seventh Step",
+        "from": "First Step",
+        "type": "ALWAYS",
+        "value": ""
+      },
+      {
+        "to": "FINISH",
+        "from": "Second Step",
+        "type": "ALWAYS",
+        "value": ""
+      }
+    ],
+    "offsets": [
+      {
+        "name": "First Step",
+        "x": "-65",
+        "y": "90"
+      },
+      {
+        "name": "Second Step",
+        "x": "-70",
+        "y": "210"
+      },
+      {
+        "name": "Third Step",
+        "x": "-70",
+        "y": "210"
+      },
+    
+     
+
+
+      {
+        "name": "FINISH",
+        "x": "-60",
+        "y": "450"
+      }
+    ],
+    "children": [
+      {
+        "allowFailure": false,
+        "useImpersonation": false,
+        "showHIdden": false,
+        "impersonationUseSudo": false,
+        "commandName": "Download Artifacts",
+        "pluginName": "IBM UrbanCode Deploy Versioned File Storage",
+        "pluginVersion": 18,
+        "type": "plugin",
+        "name": "First Step",
+        "children": [
+        ],
+        "properties": {
+          "directoryOffset": ".",
+          "artifactSetBaseDir": "",
+          "fileIncludePatterns": "**\/*",
+          "fileExcludePatterns": "",
+          "syncMode": true,
+          "fullVerification": true,
+          "setFileExecuteBits": false,
+          "verifyFileIntegrity": false,
+          "repositoryUrl": "${p:server.url}\/vfs",
+          "repositoryId": "${p:component\/code_station\/repository}",
+          "label": "${p:version.name",
+          "serverUrl": "${p:server.url}",
+          "compId": "${p:component.id}",
+          "resId": "${p:resource.id}"
+        }
+      },
+      {
+        "allowFailure": false,
+        "useImpersonation": false,
+        "showHIdden": false,
+        "impersonationUseSudo": false,
+        "commandName": "Shell",
+        "pluginName": "Shell",
+        "pluginVersion": 3,
+        "type": "plugin",
+        "name": "Second Step",
+        "children": [
+        ],
+        "properties": {
+          "directoryOffset": ".",
+          "shellInterpreter": "",
+          "scriptBody": "echo \"Hello World\"",
+          "runAsDaemon": false,
+          "outputFile": ""
+        }
+      },
+      {
+        "type": "finish",
+        "name": "FINISH",
+        "children": [
+        ]
+      }
+    ]
+  }
+}

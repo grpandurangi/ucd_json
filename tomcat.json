@@ -1,0 +1,7 @@
+{
+  "name": "Tomcat",
+  "description": "Tomcat Pool",
+  "agents": [
+    "RHEL2NEWApplication"
+  ]
+}
