@@ -1,0 +1,100 @@
+[root@RHEL1NEW json]# cat create_resource.json
+{
+  "name": "UserMgmtGrpA",
+  "description": "User Management Group A",
+}
+
+/root/udclient/udclient -weburl https://13.78.48.145:8443 -username admin -password password createResource /home/azureuser/json/create_resource.json
+
+
+[root@RHEL1NEW json]# cat update_resource1agent.json
+{
+ "name"="RHEL2NEWApplication",
+ "agent"="RHEL2NEWApplication",
+ "parent"="/UserMgmtGrpA"
+}
+
+/root/udclient/udclient -weburl https://13.78.48.145:8443 -username admin -password password createResource /home/azureuser/json/update_resource1agent.json
+
+
+[root@RHEL1NEW json]# cat update_resource2agent.json
+{
+ "name"="RHELNEW9Application",
+ "agent"="RHELNEW9Application",
+ "parent"="/UserMgmtGrpA"
+}
+
+/root/udclient/udclient -weburl https://13.78.48.145:8443 -username admin -password password createResource /home/azureuser/json/update_resource2agent.json
+
+
+/root/udclient/udclient -weburl https://13.78.48.145:8443 -username admin -password password addEnvironmentBaseResource -application UserMgmtApp -environment UserDBAppDev  -resource "/UserMgmtGrpA"
+
+
+
+[root@RHEL1NEW json]# cat vim map_component_withagent1.json
+cat: vim: No such file or directory
+{
+ "parent"="/UserMgmtGrpA/RHEL2NEWApplication",
+ "component"="ApplicationComponent"
+}
+/root/udclient/udclient -weburl https://13.78.48.145:8443 -username admin -password password createResource  /home/azureuser/json/map_component_withagent1.json
+
+[root@RHEL1NEW json]# cat map_component_withagent2.json
+{
+ "parent"="/UserMgmtGrpA/RHELNEW9Application",
+ "component"="ApplicationComponent"
+}
+
+/root/udclient/udclient -weburl https://13.78.48.145:8443 -username admin -password password createResource  /home/azureuser/json/map_component_withagent2.json
+
+
+/root/udclient/udclient -username admin -password password -weburl https://13.78.48.145:8443 createVersion -component ApplicationComponent -name 0.0.7
+
+[root@RHEL1NEW json]# cat /home/azureuser/json/run_application_process.json
+{
+  "application": "UserMgmtApp",
+  "description": "Deploying newest versions",
+  "applicationProcess": "ApplicationDeployment",
+  "environment": "UserDBAppDev",
+  "onlyChanged": "false",
+  "versions": [
+    {
+      "version": "latest",
+      "component": "ApplicationComponent"
+    },
+  ]
+}
+
+/root/udclient/udclient -username admin -password password -weburl https://13.78.48.145:8443 requestApplicationProcess /home/azureuser/json/run_application_process.json
+
+
+[root@RHEL1NEW json]# cat /home/azureuser/json/createcomponent.json
+{
+  "name": "ApplicationComponent1",
+  "description": "Deploy Tomcat Application",
+  "importAutomatically": false,
+  "useVfs": true,
+  "sourceConfigPlugin": "Artifactory",
+  "defaultVersionType": "FULL",
+   "properties": {
+    "ArtifactoryComponentProperties\/artifactId": "MongoDBWebapp",
+    "ArtifactoryComponentProperties\/copyCount": "1",
+    "ArtifactoryComponentProperties\/extension": ".war",
+    "ArtifactoryComponentProperties\/groupId": "MongoDBWebapp",
+    "ArtifactoryComponentProperties\/repoName": "libs-snapshot-local",
+    "ArtifactoryComponentProperties\/user": "user",
+    "ArtifactoryComponentProperties\/password": "password",
+    "ArtifactoryComponentProperties\/separator": ".",
+    "ArtifactoryComponentProperties\/repoUrl": "http:\/\/13.73.0.245:8081\/artifactory",
+    "ArtifactoryComponentProperties\/nuGetVersion":"0.0.8",
+    "ArtifactoryComponentProperties\/nuGetPackage":"MongoDBWebapp"
+  }
+}
+
+
+
+
+/root/udclient/udclient -weburl https://13.78.48.145:8443 -username admin -password password getComponentProcess -component "ApplicationComponent" -componentProcess "ComponentDeploy"
+
+
+
